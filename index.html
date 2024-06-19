@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="php.php">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F7F7;
+}
+
+form {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDFE2;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #DDDFE2;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4267B2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #365899;
+}
+</style>
+<body>
+    <form action="php.php" method="post">
+        Name: <input type="text" name="name"><br>
+        Address: <input type="text" name="address"><br>
+        Shoe Size: <input type="text" name="shoe_size"><br>
+        Age: <input type="text" name="age"><br>
+        Ambition: <input type="text" name="ambition"><br>
+        Class: <input type="text" name="class"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+   
+    
+</body>
+</html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    // ... collect other form data
+    $to = 'your_email@example.com';
+    $subject = 'New Form Submission';
+    $message = "Name: $name\nAddress: $address\n...";
+    // ... construct message with all form data
+    mail($to, $subject, $message);
+    // ... handle mail sending success or failure
+}
+?>
